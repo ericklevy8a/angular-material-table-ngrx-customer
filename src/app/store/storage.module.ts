@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 
-import { EffectsModule } from '@ngrx/effects/src';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools/src';
-import { StoreModule } from '@ngrx/store/src';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import { CustomerEffects } from './effects/customer.effects';
 
 @NgModule({
   imports: [
-    //StoreModule.forRoot(reducers),
-    //EffectsModule.forRoot([CustomerEffects]),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([CustomerEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
-      // logOnly: environment.production,
+      logOnly: environment.production,
     }),
   ],
   exports: [StoreModule],
